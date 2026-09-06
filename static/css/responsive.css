@@ -1,0 +1,32 @@
+@media screen and (max-width: 600px) {
+
+  /* hero */
+
+  .hero .hero-content {
+    background-image: url('../img/home-background-img-mobile.png');
+  }
+
+  .hero-text-wrapper {
+    bottom: 5%;
+    left: 7%;
+    text-align: left;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .hero-title span {
+    font-size: 3rem;
+    color: white;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.15;
+    margin-top: 0.5em;
+  }
+  
+}
