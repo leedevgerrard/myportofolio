@@ -99,5 +99,15 @@
   .achieve ul p {
     font-size: 0.8rem;
   }
+
+  /* contact */
+
+  .contact-content {
+    gap: 0.5em;
+  }
+
+  .contact-wrapper p {
+    font-size: 1rem;
+  }
   
 }

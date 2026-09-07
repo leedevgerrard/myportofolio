@@ -320,9 +320,9 @@ p {
 }
 
 .achieve ul li {
-  padding: 1em;
-  border-radius: 10px;
-  background-color: #161616;
+    padding: 1em;
+    border-radius: 10px;
+    background-color: #161616;
 }
 
 .achieve ul .img-container {
@@ -349,4 +349,80 @@ p {
 
 .achieve ul p {
     font-size: 1rem;
+}
+
+/* ------------------ CONTACT ------------------ */
+
+.contact {
+    padding-bottom: 1rem;
+}
+
+.contact .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.75em;
+    padding-bottom: 0.75rem;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.contact-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.contact-wrapper p {
+    margin: 0;
+}
+
+/* ------------------ FOOTER ------------------ */
+
+.footer {
+  border-top: 1px #dddddd solid;
+  margin-inline: 1em;
+}
+
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding-block: 2rem;
+}
+
+.footer-copyright p {
+  font-size: 0.8rem;
+  color: #dddddd;
+}
+
+.social-media-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.social-media-link {
+  font-size: 2.5rem;
+}
+
+.social-media-link ion-icon {
+  color: white;
+  transition: 250ms ease;
+}
+
+.social-media-link:is(:hover, :focus-visible) ion-icon {
+  color: var(--accent);
+  transform: scale(1.15);
 }
