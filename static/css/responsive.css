@@ -10,6 +10,19 @@
 
 @media screen and (max-width: 600px) {
 
+  /* typography */
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  /* reused style */
+
+  .container {
+    width: 90%;
+    padding: 2rem 1rem;
+  }
+
   /* hero */
 
   .hero .hero-content {
@@ -61,12 +74,30 @@
   }
 
   .about-img {
-    width: 100%;
+    width: 80%;
   }
 
   .skills-wrapper {
     grid-template-columns: repeat(2, minmax(0, 30rem));
     padding: 0;
+  }
+
+  /* achievements */
+
+  .achieve .container {
+    width: 90%;
+  }
+
+  .achieve ul {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 30rem));
+  }
+
+  .achieve ul h3 {
+    font-size: 1rem;
+  }
+
+  .achieve ul p {
+    font-size: 0.8rem;
   }
   
 }
