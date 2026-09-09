@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lee Devin Gerrard - Portfolio</title>
+    <title>{{ name }} - Portfolio</title>
     <meta name="title" content="Lee Devin - Personal Website">
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -28,8 +28,8 @@
     <header class="site-header">
       <div class="container">
 
-        <a href="#" class="brand">
-          LEE DEVIN GERRARD
+        <a href="{% url 'main:show_main' %}" class="brand">
+          {{ name }}
         </a>
         
         <nav>
@@ -42,8 +42,8 @@
             </li>
 
             <li class="navbar-item">
-              <a href="#projects" class="navbar-link">
-                PROJECTS
+              <a href="{% url 'main:show_experience' %}" class="navbar-link">
+                EXPERIENCE
               </a>
             </li>
 
@@ -76,7 +76,7 @@
             <h1 class="hero-title">
               LEE DEVIN <span>GERRARD</span>
             </h1>
-            <h2 class="hero-subtitle">2506548452 &middot; S1 Ilmu Komputer &middot; Universitas Indonesia</h2>
+            <h2 class="hero-subtitle">{{ npm }} &middot; {{ study_program }} &middot; Universitas Indonesia</h2>
           </div>
         </li>
 
@@ -91,12 +91,12 @@
       <div class="container">
 
         <div class="about-img containing-img">
-          <img src="../static/img/profile-picture.jpg" loading="lazy" alt="Photo of Lee Devin">
+          <img src="../static/img/profile-picture.jpg" loading="lazy" alt="Photo of {{ name }}">
         </div>
         
         <div class="about-content containing-text">
           <h2 class="section-title">ABOUT ME</h2>
-          <p>I am a highly motivated Computer Science student at Universitas Indonesia. I love learning new things, building things, breaking things, and figuring out why they work the way they do. I'm currently discovering the world of cybersecurity and AI.</p>
+          <p>{{ bio }}</p>
           <div class="skills-wrapper containing-text">
             <button>HTML, CSS, JS</button>
             <button>MERN</button>
@@ -194,7 +194,7 @@
         </div>
 
         <div class="footer-copyright">
-          <p>&copy; 2026 by Lee Devin Gerrard</p>
+          <p>&copy; 2026 by {{ name }}</p>
         </div>
 
       </div>
