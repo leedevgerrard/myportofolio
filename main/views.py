@@ -21,6 +21,6 @@ def show_main(request):
 def show_experience(request):
     context = {
         "name": "Lee Devin Gerrard",
-        "experience_list": Experience.objects.all(),
+        "experience_list": Experience.objects.order_by("-start_date"),
     }
     return render(request, "experience.html", context)

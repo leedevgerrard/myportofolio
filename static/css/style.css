@@ -10,9 +10,10 @@
     --dark-bg: #040406;
     --accent: #ec6827;
     --accent-dark: #a8442a;
-    --line: #e3d9c9;
-    --text-muted: #6b6459;
+    --line: #888888;
+    --text-muted: #bebebe;
     --radius: 4px;
+    --gradient-bg: linear-gradient(135deg, #222222 0%, #1a1a1a 60%, #161616 100%);
 }
 
 html {
@@ -322,7 +323,15 @@ p {
 .achieve ul li {
     padding: 1em;
     border-radius: 10px;
-    background-color: #161616;
+    background: var(--gradient-bg);
+    border: 0.5px solid transparent;
+    transition: 250ms ease;
+}
+
+.achieve ul li:is(:hover, :focus-visible) {
+    border: 0.5px solid #bebebe;
+    transform: translateY(-5px);
+    cursor: pointer;
 }
 
 .achieve ul .img-container {
@@ -349,6 +358,7 @@ p {
 
 .achieve ul p {
     font-size: 1rem;
+    color: var(--text-muted);
 }
 
 /* ------------------ CONTACT ------------------ */
@@ -429,39 +439,59 @@ p {
 
 /* ----------------- EXPERIENCE ------------------ */
 
-.experience-section {
+.experience {
     padding: 4rem 0;
     border-top: 1px solid var(--line);
 }
 
-.section-kicker {
-    color: var(--accent-dark);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.experience-section h1 {
-    margin: 0.4rem 0 1.5rem;
+.experience h1 {
+    margin: 0.4rem 0 2rem;
     font-size: 2rem;
+    width: 100%;
 }
 
-.experience-grid {
+.experience .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.experience-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 80%;
+    justify-content: center;
+}
+
+.experience-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr 4fr;
+    gap: 1em;
+}
+
+.experience-date {
+    font-size: 2em;
+    font-weight: 700;
 }
 
 .experience-card {
     padding: 1.25rem;
-    background-color: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+    background: var(--gradient-bg);
+    border-radius: 10px;
+    border: 0.5px solid transparent;
+    transition: 250ms ease;
+}
+
+.experience-card:is(:hover, :focus-visible) {
+    border: 0.5px solid #bebebe;
+    transform: translateY(-5px);
+    cursor: pointer;
 }
 
 .experience-category {
-    color: var(--accent-dark);
+    color: var(--accent);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -472,7 +502,7 @@ p {
     font-size: 1.25rem;
 }
 
-.experience-description,
+.experience-desc,
 .empty-state {
     color: var(--text-muted);
 }
