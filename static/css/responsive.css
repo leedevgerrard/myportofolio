@@ -149,5 +149,35 @@
   .experience-desc {
     font-size: 1rem;
   }
+
+  /* project */
+
+  .project .container {
+    width: 90%;
+  }
+
+  .project-card {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .project-card .img-container {
+    width: 100%;
+  }
+
+  .project-text-wrapper {
+    width: 100%;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .project-text-wrapper h2 {
+    font-size: 1.5rem;
+  }
+
+  .project-text-wrapper p {
+    font-size: 1rem;
+    text-align: center;
+  }
   
 }

@@ -10,7 +10,7 @@
     --dark-bg: #040406;
     --accent: #ec6827;
     --accent-dark: #a8442a;
-    --line: #888888;
+    --line: #909090;
     --text-muted: #bebebe;
     --radius: 4px;
     --gradient-bg: linear-gradient(135deg, #222222 0%, #1a1a1a 60%, #161616 100%);
@@ -441,7 +441,6 @@ p {
 
 .experience {
     padding: 4rem 0;
-    border-top: 1px solid var(--line);
 }
 
 .experience h1 {
@@ -485,7 +484,7 @@ p {
 }
 
 .experience-card:is(:hover, :focus-visible) {
-    border: 0.5px solid #bebebe;
+    border: 0.5px solid var(--line);
     transform: translateY(-5px);
     cursor: pointer;
 }
@@ -511,4 +510,78 @@ p {
     margin-top: 1rem;
     font-size: 0.85rem;
     font-weight: 600;
+}
+
+/* ------------------ PROJECT ------------------- */
+
+.project {
+    padding: 4rem 0;
+}
+
+.project h1 {
+    margin: 0.4rem 0 2rem;
+    font-size: 2rem;
+    width: 100%;
+}
+
+.project .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1em;
+    gap: 5%;
+    border-radius: 10px;
+    border: 0.5px solid transparent;
+    background: var(--gradient-bg);
+    transition: 250ms ease;
+}
+
+.project-card:is(:hover, :focus-visible) {
+    border: 0.5px solid var(--line);
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.project-card .img-container {
+    border-radius: 10px;
+    width: 25%;
+}
+
+.project-card .img-container img {
+    object-fit: contain;
+    border-radius: 10px;
+    width: 100%;
+    transition: 250ms ease;
+}
+
+.project-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    gap: 1em;
+}
+
+.project-text-wrapper h2 {
+    font-size: 1.75rem;
+}
+
+.project-text-wrapper p {
+    color: var(--text-muted);
 }
