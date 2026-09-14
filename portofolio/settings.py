@@ -79,6 +79,13 @@ WHITENOISE_USE_FINDERS = True
 
 WSGI_APPLICATION = 'portofolio.wsgi.application'
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://lee-devin-myportofolio.pws.cs.ui.ac.id",
+]
+
+CSRF_COOKIE_SECURE    = True
+SESSION_COOKIE_SECURE = True
+
 
 # Database configuration
 if PRODUCTION:
