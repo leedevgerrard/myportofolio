@@ -125,10 +125,9 @@ p {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 2rem;
     margin: 0;
     width: 100%;
-    gap: 8px;
 }
 
 .brand {
@@ -136,7 +135,7 @@ p {
     font-weight: 700;
     color: var(--ink);
     text-decoration: none;
-    padding-left: 10px;
+    text-transform: uppercase;
     transition: 250ms ease;
 }
 
@@ -144,20 +143,17 @@ p {
     color: var(--accent);
 }
 
-.site-header nav {
-    margin-inline: auto 20px;
-}
-
 .navbar-ul {
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 2.5em;
 }
 
 .navbar-link {
     position: relative;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
+    font-size: 1rem;
     padding-block: 5px;
     max-width: max-content;
     letter-spacing: 1.5px;
@@ -454,13 +450,13 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 70%;
 }
 
 .experience-content {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    width: 80%;
     justify-content: center;
 }
 

@@ -26,20 +26,20 @@
   /* header */
 
   .site-header .container {
-    padding-inline: 0.5rem;
+    padding-inline: 1rem;
   }
 
   .brand {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
+    width: 20%;
   }
 
   .navbar-ul {
-    gap: 0;
+    gap: 0.25em;
   }
 
-  .navbar-item {
-    font-size: 0.5rem;
-    padding-left: 0.5em;
+  .navbar-link {
+    font-size: 0.6rem;
   }
 
   /* hero */
@@ -130,6 +130,10 @@
   }
 
   /* experience */
+
+  .experience .container {
+    width: 90%;
+  }
 
   .experience-content {
     width: 100%;
