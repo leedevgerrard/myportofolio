@@ -183,5 +183,55 @@
     font-size: 1rem;
     text-align: center;
   }
+
+  .project-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .project-add-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-search {
+    flex-direction: column;
+  }
+
+  .project-search .button {
+    width: 100%;
+  }
+
+  .project-delete-modal {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .project-delete-modal__content {
+    width: 100%;
+    padding: 1.25rem;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .project-delete-modal__actions {
+    flex-direction: column-reverse;
+  }
+
+  .project-delete-modal__actions .button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* project form */
+
+  .form-section .container {
+    width: 90%;
+  }
+
+  .button {
+    font-size: 0.75rem;
+    /* margin-right: 0; */
+    margin-bottom: 1em;
+  }
   
 }
