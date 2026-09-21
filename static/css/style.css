@@ -442,7 +442,6 @@ p {
 .experience h1 {
     margin: 0.4rem 0 2rem;
     font-size: 2rem;
-    width: 100%;
 }
 
 .experience .container {
@@ -599,7 +598,8 @@ p {
     width: 70%;
 }
 
-.project-form {
+.project-form,
+.experience-form {
     width: 100%;
     max-width: 100%;
     margin-top: 1.5rem;
@@ -616,7 +616,8 @@ p {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     box-sizing: border-box;
     padding: 0.7rem;
@@ -659,11 +660,15 @@ p {
     color: var(--accent);
 }
 
-.project-form .button {
+/* --------------- PROJECT & EXPERIENCE ---------------- */
+
+.project-form .button,
+.experience-form .button {
     margin-right: 0.5em;
 }
 
-.project-header {
+.project-header,
+.experience-header {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -673,29 +678,34 @@ p {
     margin-bottom: 1.5rem;
 }
 
-.project-header h1 {
+.project-header h1,
+.experience-header h1 {
     margin-bottom: 0;
 }
 
-.project-add-button {
+.project-add-button,
+.experience-add-button {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
 }
 
-.project-add-button span {
+.project-add-button span,
+.experience-add-button span {
     font-size: 1.25rem;
     line-height: 1;
 }
 
-.project-search {
+.project-search,
+.experience-search {
     width: 100%;
     display: flex;
     gap: 0.75rem;
     margin-bottom: 1.5rem;
 }
 
-.project-search__input {
+.project-search__input,
+.experience-search__input {
     width: 100%;
     min-width: 0;
     padding: 0.7rem;
@@ -706,12 +716,14 @@ p {
     font: inherit;
 }
 
-.project-search__input:focus {
+.project-search__input:focus,
+.experience-search__input:focus {
     outline: 2px solid var(--accent);
     border-color: var(--accent);
 }
 
-.project-actions {
+.project-actions,
+.experience-actions {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -719,12 +731,22 @@ p {
     margin-top: 1rem;
 }
 
-.project-actions .button {
+.project-actions .button,
+.experience-actions .button {
     font-size: 0.85rem;
     font-weight: 600;
+    background-color: transparent;
+    border: 0.5px solid var(--accent);
+    transition: 250ms ease;
 }
 
-.project-card-actions {
+.project-actions .button:is(:hover, :focus-visible),
+.experience-actions .button:is(:hover, :focus-visible) {
+    background-color: var(--accent);
+}
+
+.project-card-actions,
+.experience-card-actions {
     display: flex;
     flex-direction: column;
 }
@@ -733,11 +755,13 @@ p {
     display: none !important;
 }
 
-.project-actions .experience-status {
+.project-actions .experience-status,
+.experience-actions .experience-status {
     margin-top: 0;
 }
 
-.project-delete-modal {
+.project-delete-modal,
+.experience-delete-modal {
     display: none;
     position: fixed;
     inset: 0;
@@ -754,11 +778,13 @@ p {
     justify-content: center;
 }
 
-.project-delete-modal:popover-open {
+.project-delete-modal:popover-open,
+.experience-delete-modal:popover-open {
     display: flex;
 }
 
-.project-delete-modal__backdrop {
+.project-delete-modal__backdrop,
+.experience-delete-modal__backdrop {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -769,7 +795,8 @@ p {
     cursor: default;
 }
 
-.project-delete-modal__content {
+.project-delete-modal__content,
+.experience-delete-modal__content {
     position: relative;
     z-index: 1;
     width: min(100%, 480px);
@@ -780,7 +807,8 @@ p {
     box-shadow: 0 1rem 3rem rgba(28, 25, 23, 0.22);
 }
 
-.project-delete-modal__content h2 {
+.project-delete-modal__content h2,
+.experience-delete-modal__content h2 {
     margin: 0 0 0.75rem;
     font-family:
         "Space Grotesk",
@@ -789,7 +817,8 @@ p {
     font-size: 1.5rem;
 }
 
-.project-delete-modal__close {
+.project-delete-modal__close,
+.experience-delete-modal__close {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -802,13 +831,24 @@ p {
     cursor: pointer;
 }
 
-.project-delete-modal__actions {
+.project-delete-modal__actions,
+.experience-delete-modal__actions {
     display: flex;
     justify-content: flex-end;
     gap: 0.75rem;
     margin-top: 1.5rem;
 }
 
-.button-danger {
-    background: #b42318;
+.project-actions .button-danger,
+.experience-actions .button-danger {
+    border: 0.5px solid #b42318;
+}
+
+.project-actions .button-danger:is(:hover, :focus-visible),
+.experience-actions .button-danger:is(:hover, :focus-visible) {
+    background-color: #b42318;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }

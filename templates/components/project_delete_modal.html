@@ -31,7 +31,7 @@
         </p>
         <div class="project-delete-modal__actions">
             <button type="button"
-                    class="button button-secondary"
+                    class="button"
                     popovertarget="delete-project-{{ project.id }}"
                     popovertargetaction="hide">Cancel</button>
             <form method="post" action="{% url 'main:delete_project' project.id %}">
