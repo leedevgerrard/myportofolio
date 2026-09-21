@@ -184,45 +184,51 @@
     text-align: center;
   }
 
-  .project-header {
+  .project-header,
+  .experience-header {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .project-add-button {
+  .project-add-button,
+  .experience-add-button {
     width: 100%;
     justify-content: center;
   }
 
-  .project-search {
+  .project-search,
+  .experience-search {
     flex-direction: column;
   }
 
-  .project-search .button {
+  .project-search .button,
+  .experience-search .button {
     width: 100%;
   }
 
-  .project-delete-modal {
+  .project-delete-modal,
+  .experience-delete-modal {
     align-items: flex-end;
     padding: 0;
   }
 
-  .project-delete-modal__content {
+  .project-delete-modal__content,
+  .experience-delete-modal__content {
     width: 100%;
     padding: 1.25rem;
     border-radius: var(--radius) var(--radius) 0 0;
   }
 
-  .project-delete-modal__actions {
+  .project-delete-modal__actions,
+  .experience-delete-modal__actions {
     flex-direction: column-reverse;
   }
 
-  .project-delete-modal__actions .button {
+  .project-delete-modal__actions .button,
+  .experience-delete-modal__actions .button {
     width: 100%;
     text-align: center;
   }
-
-  /* project form */
 
   .form-section .container {
     width: 90%;
@@ -232,6 +238,31 @@
     font-size: 0.75rem;
     /* margin-right: 0; */
     margin-bottom: 1em;
+  }
+
+  /* project & experience */
+
+  .project-card-actions,
+  .experience-card-actions {
+    width: 100%;
+  }
+
+  .project-actions,
+  .experience-actions {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .experience-status {
+    width: 100%;
+  }
+
+  .project-actions .button,
+  .experience-status .button,
+  .experience-actions .button {
+    margin: 0;
+    width: 100%;
+    text-align: center;
   }
   
 }
