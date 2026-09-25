@@ -7,7 +7,7 @@
   <title>Experience - {{ name }}</title>
   <meta name="title" content="Lee Devin - Experience">
   <meta name="keywords" content="">
-  <meta name="description" content="">
+  <meta name="description" content="">  
 
   <!-- favicon -->
   <link rel="shortcut icon" href="" type="">
@@ -51,6 +51,22 @@
               PROJECTS
             </a>
           </li>
+
+          {% if user.is_authenticated %}
+            <li class="navbar-item">
+              <span class="nav-user">{{ user.username }}</span>
+            </li>
+            <li class="navbar-item">
+              <a href="{% url 'main:logout' %}">Logout</a>
+            </li>
+          {% else %}
+            <li class="navbar-item">
+              <a href="{% url 'main:login' %}">Login</a>
+            </li>
+            <li class="navbar-item">
+              <a href="{% url 'main:register' %}">Register</a>
+            </li>
+          {% endif %}
 
         </ul>
       </nav>

@@ -230,6 +230,12 @@ p {
     z-index: 3;
 }
 
+.small-subtitle {
+    margin-top: 0.5em;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
 /* -------------------- ABOUT -------------------- */
 
 .about .container {
@@ -851,4 +857,33 @@ p {
 
 .date-input::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+
+.form-help,
+.form-help li {
+    color: var(--text-muted);
+}
+
+/* ------------------- STAR ------------------- */
+
+.star-form {
+    display: inline;
+}
+
+.button-star {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--ink);
+}
+
+.button-star.is-starred {
+    background: var(--accent);
+}
+
+.star-count {
+    padding: 0.05rem 0.4rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    font-size: 0.8rem;
 }
