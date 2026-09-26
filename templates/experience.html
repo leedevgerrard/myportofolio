@@ -55,6 +55,7 @@
                           Update Experience
                         </a>
                       {% endif %}
+                      {% include "components/experience_star.html" with experience=experience %}
                       {% if user.is_superuser %}
                         {% include "components/experience_delete_modal.html" with experience=experience %}
                       {% endif %}
