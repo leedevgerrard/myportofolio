@@ -36,14 +36,16 @@
                   <p class="project-description">{{ project.description }}</p>
                   <div class="project-card-actions">
                     <div class="project-actions">
-                      <a type="button"
-                          href="{% url 'main:update_project' project.id %}"
-                          class="button"
-                          popovertarget="update-project-{{ project.id }}"
-                          aria-label="Update {{ project.title }}"
-                          title="Update Project">
-                        Update Project
-                      </a>
+                      {% if user.is_superuser or perms.main.change_project %}
+                        <a type="button"
+                            href="{% url 'main:update_project' project.id %}"
+                            class="button"
+                            popovertarget="update-project-{{ project.id }}"
+                            aria-label="Update {{ project.title }}"
+                            title="Update Project">
+                          Update Project
+                        </a>
+                      {% endif %}
                       {% include "components/project_star.html" with project=project %}
                       {% if user.is_superuser %}
                         {% include "components/project_delete_modal.html" with project=project %}

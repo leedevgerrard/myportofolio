@@ -100,7 +100,11 @@ def get_projects_json(request):
     return HttpResponse(projects_json, content_type="application/json")
 
 
+@login_required(login_url="/login/")
 def update_project(request, project_id):
+    if not request.user.is_superuser and not request.user.has_perm("main.change_project"):
+        raise PermissionDenied
+
     project = get_object_or_404(Project, pk=project_id)
 
     if request.method == "POST":
@@ -135,7 +139,11 @@ def delete_project(request, project_id):
     return redirect("main:show_projects")
 
 
+@login_required(login_url="/login/")
 def create_experience(request):
+    if not request.user.is_superuser:
+        raise PermissionDenied
+
     form = ExperienceForm(request.POST or None)
 
     if request.method == "POST" and form.is_valid():
@@ -161,7 +169,11 @@ def get_experience_json(request):
     return HttpResponse(experience_json, content_type="application/json")
 
 
+@login_required(login_url="/login/")
 def update_experience(request, experience_id):
+    if not request.user.is_superuser and not request.user.has_perm("main.change_experience"):
+        raise PermissionDenied
+    
     experience = get_object_or_404(Experience, pk=experience_id)
 
     if request.method == "POST":
@@ -181,7 +193,11 @@ def update_experience(request, experience_id):
     return render(request, "experience_update_form.html", context)
 
 
+@login_required(login_url="/login/")
 def delete_experience(request, experience_id):
+    if not request.user.is_superuser:
+        raise PermissionDenied
+
     experience = get_object_or_404(Experience, pk=experience_id)
 
     if request.method == "POST":
