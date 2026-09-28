@@ -1006,3 +1006,15 @@ p {
     font-weight: 600;
     font-size: 1.5em;
 }
+
+.login-register-msg {
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+    margin-top: 1em;
+}
+
+.login-register-msg a {
+    display: inline;
+    color: var(--accent);
+}
