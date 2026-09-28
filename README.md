@@ -45,6 +45,12 @@ Website ini merupakan website portofolio pribadi yang dibuat untuk memenuhi tuga
 - Membuat fungsi-fungsi pada view untuk mengimplementasikan CRUD pada Experience dan Project
 - Menggunakan JSON sebagai format data delivery
 
+### Minggu 4 - Individual Assignment 4: Authentication, Session and Cookies Implementation
+- Manajemen authorization dan menambah Editor
+- Menambah fitur pemberian star
+- Memastikan kemananan API dan data
+- Menambahkan halaman project detail dan menambah field Project (fitur tambahan)
+
 ## Setup & Instalasi
 
 1. Clone repository project ini
@@ -121,3 +127,5 @@ Format:
 #### 001 / 3 - Widget ModelForm & best practice HTTP method : [tautan ke chat](https://chatgpt.com/share/6ab15a5a-5430-83ec-9907-7e3152ab390f)
 #### 002 / 3 - Penjelasan properti CSS flex-wrap : [tautan ke chat](https://chatgpt.com/share/6ab15be9-e360-83ec-947f-de3f18c15e11)
 #### 003 / 3 - Format data default dari database pada Django : [tautan ke chat](https://chatgpt.com/share/6ab15b31-c574-83ec-b0e2-7741938130c1)
+#### 004 / 4 - Django group dan permission : [tautan ke chat](https://chatgpt.com/share/6aba8509-7510-83ec-9fbd-1cbcf37588a4)
+#### 005 / 4 - Troubleshooting ModelForm : [tautan ke chat](https://chatgpt.com/share/6aba8590-ae68-83ec-afe8-77d077e3aea8)
