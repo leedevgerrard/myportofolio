@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <main>
+      <!-- --------------- HERO --------------- -->
+
+      <section class="about text-center" aria-labelledby="about-label" id="about">
+
+        <div class="hero-detail-container container">
+
+          <div class="hero-detail-content containing-text">
+            <h2>{{ project.title }}</h2>
+            <div class="text-wrapper">
+              <p>{{ project.description }}</p>
+              <div class="info-wrapper">
+                <div class="info-titles">
+                  <span>Year</span>
+                  <span>Role</span>
+                  <span>Stack</span>
+                </div>
+                <div>
+                  <span>{{ project.year }}</span>
+                  <span>{{ project.role }}</span>
+                  <span>{{ project.stack }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-detail-img containing-img">
+            <img src="{{ project.screenshot }}" loading="lazy" alt="Picture of {{ project.title }}">
+          </div>
+
+          <!-- ------------ PROBLEM & GOALS -------------- -->
+      
+          <section class="problem-goals text-center" aria-labelledby="problem-goals-label" id="problem">
+            <div class="problem-goals-container container">
+              <div class="containing-text anim-from-left">
+                <h2>PROBLEM</h2>
+                <p>{{ project.problem }}</p>
+              </div>
+              <div class="containing-text anim-from-right">
+                <h2>GOALS</h2>
+                <ul>
+                  {% for goal in project.goals %}
+                    <li><span>#{{ forloop.counter }}</span> {{ goal }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </section>
+    </main>
+
+{% endblock content %}

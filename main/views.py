@@ -70,6 +70,16 @@ def show_project(request):
     return render(request, "project.html", context)
 
 
+def show_project_detail(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+
+    context = {
+        "name": "Lee Devin Gerrard",
+        "project": project,
+    }
+    return render(request, "project_detail.html", context)
+
+
 @login_required(login_url="/login/")
 def create_project(request):
     if not request.user.is_superuser:

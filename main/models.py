@@ -36,7 +36,12 @@ class Project(models.Model):
   title = models.CharField(max_length=255)
   description = models.TextField()
   thumbnail = models.URLField(blank=True, null=True)
-  thumbnail_alt = models.CharField(max_length=255)
+  year = models.PositiveIntegerField()
+  role = models.CharField(max_length=255)
+  stack = models.CharField(max_length=255)
+  screenshot = models.URLField(blank=True, null=True)
+  problem = models.TextField()
+  goals = models.JSONField(default=list)
   started_at = models.DateTimeField(auto_now_add=True)
   ended_at = models.DateTimeField(blank=True, null=True)
   starred_by = models.ManyToManyField(

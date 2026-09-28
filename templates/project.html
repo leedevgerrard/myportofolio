@@ -29,10 +29,12 @@
             {% for project in project_list %}
               <article class="project-card">
                 <div class="img-container">
-                  <img src="{{ project.thumbnail }}" loading="lazy" alt="{{ project.thumbnail_alt }}">
+                  <img src="{{ project.thumbnail }}" loading="lazy" alt="Logo of {{ project.title }}">
                 </div>
                 <div class="project-text-wrapper">
-                  <h2>{{ project.title }}</h2>
+                  <a href="{% url 'main:show_project_detail' project.id %}">
+                    <h2>{{ project.title }}</h2>
+                  </a>
                   <p class="project-description">{{ project.description }}</p>
                   <div class="project-card-actions">
                     <div class="project-actions">

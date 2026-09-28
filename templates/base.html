@@ -54,17 +54,17 @@
 
           {% if user.is_authenticated %}
             <li class="navbar-item">
-              <span class="nav-user">{{ user.username }}</span>
+              <span class="nav-user navbar-link">{{ user.username }}</span>
             </li>
             <li class="navbar-item">
-              <a href="{% url 'main:logout' %}">Logout</a>
+              <a class="navbar-link" href="{% url 'main:logout' %}">LOGOUT</a>
             </li>
           {% else %}
             <li class="navbar-item">
-              <a href="{% url 'main:login' %}">Login</a>
+              <a class="navbar-link" href="{% url 'main:login' %}">LOGIN</a>
             </li>
             <li class="navbar-item">
-              <a href="{% url 'main:register' %}">Register</a>
+              <a class="navbar-link" href="{% url 'main:register' %}">REGISTER</a>
             </li>
           {% endif %}
 

@@ -555,7 +555,6 @@ p {
 .project-card:is(:hover, :focus-visible) {
     border: 0.5px solid var(--line);
     transform: translateY(-5px);
-    cursor: pointer;
 }
 
 .project-card .img-container {
@@ -580,6 +579,11 @@ p {
 
 .project-text-wrapper h2 {
     font-size: 1.75rem;
+    transition: 250ms ease;
+}
+
+.project-text-wrapper h2:is(:hover, :focus-visible) {
+    color: var(--accent);
 }
 
 .project-text-wrapper p {
@@ -886,4 +890,119 @@ p {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.25);
     font-size: 0.8rem;
+}
+
+/* ---------- PROJECT DETAIL ----------- */
+
+.about .hero-detail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+    width: 80%;
+    gap: 0;
+}
+
+.hero-detail-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+.hero-detail-content h2 {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 1.25rem;
+    color: var(--accent);
+    text-align: left;
+}
+
+.hero-detail-content .text-wrapper {
+    display: grid;
+    text-align: left;
+    margin: 1.5em 0;
+    gap: 10%;
+    grid-template-columns: 50% 40%;
+}
+
+.hero-detail-content .text-wrapper p {
+    font-size: 1.5rem;
+}
+
+.hero-detail-content p {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 130%;
+    margin: 0;
+}
+
+.hero-detail-content .info-wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 1em;
+    background-color: #161616;
+    border-radius: 10px;
+}
+
+.hero-detail-content .info-titles {
+    font-weight: 600;
+}
+
+.hero-detail-content .info-wrapper span {
+    margin: 0.5em;
+}
+
+.hero-detail-img {
+    position: relative;
+    width: 100%;
+    margin-inline: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 1em;
+}
+
+.hero-detail-img img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.about .problem-goals-container {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+    width: 100%;
+    padding-inline: 0;
+}
+
+.about .problem-goals-container div {
+    background-color: #161616;
+    text-align: left;
+    padding: 2em;
+    margin: 1em 0;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.about .problem-goals-container h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.about .problem-goals-container ul {
+    padding-left: 1em;
+}
+
+.about .problem-goals-container li {
+    font-size: 1.2em;
+}
+
+.about .problem-goals-container li span {
+    font-weight: 600;
+    font-size: 1.5em;
 }

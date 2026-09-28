@@ -16,7 +16,6 @@ class MainTest(TestCase):
             title="POSIFIED",
             description="A web-based Point of Sale application created using MERN stack. Built specifically for culinary Micro, Small, and Medium Enterprises (MSMEs)",
             thumbnail="../static/img/posified-white-logo.png",
-            thumbnail_alt="Logo of POSIFIED",
         )
 
     def test_main_url_is_accessible(self):
@@ -66,7 +65,6 @@ class MainTest(TestCase):
     def test_project_model(self):
         self.assertEqual(str(self.project), "POSIFIED")
         self.assertEqual(self.project.thumbnail, "../static/img/posified-white-logo.png")
-        self.assertEqual(self.project.thumbnail_alt, "Logo of POSIFIED")
 
     def test_project_page(self):
         response = self.client.get(reverse("main:show_project"))
