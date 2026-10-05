@@ -51,6 +51,12 @@ Website ini merupakan website portofolio pribadi yang dibuat untuk memenuhi tuga
 - Memastikan kemananan API dan data
 - Menambahkan halaman project detail dan menambah field Project (fitur tambahan)
 
+### Minggu 5 - Individual Assignment 5: Web Interactivity with JavaScript
+- Menampilkan dan menambahkan data dengan AJAX
+- Pencarian dengan debouncing
+- Menambahkan notifikasi toast
+- Mengimplementasikan mitigasi XSS
+
 ## Setup & Instalasi
 
 1. Clone repository project ini
@@ -108,6 +114,12 @@ Website dapat diakses pada `http://127.0.0.1:8000/`
 2. Karena JSON lebih relevan dengan kebutuhan aplikasi web modern dan JSON memberikan kemudahan. Beberapa keunggulan JSON dibanding XML antara lain formatnya yang lebih sederhana, sangat cocok dengan JavaScript (karena sangat mirip dengan object di JavaScript), dan dapat digunakan oleh banyak bahasa pemrograman. Sedangkan XML lebih banyak digunakan untuk sistem enterprise dan legacy karena bersifat lebih kompleks.
 3. Ketika view menerima HTTP request, view akan mengambil data dari database. Data yang dikirimkan dari database tersebut secara default berbentuk QuerySet yang berisi Django Model Instance. Untuk memudahkan transmisi data dan agar sesuai dengan format standar, maka dilakukanlah serialization terhadap data tersebut menjadi format JSON. Kemudian, JSON tersebut oleh fungsi lain pada view akan di-deserialize agar kemudian dapat digunakan datanya di template dengan mudah.
 
+### Tugas 5
+
+1. Debouncing adalah sebuah teknik untuk menunda eksekusi suatu fungsi hingga beberapa saat setelah event terakhir terjadi. Dalam hal fitur pencarian yang menggunakan AJAX, mekanismenya adalah setiap kali user mengetikkan suatu karakter baru tanpa jeda, timer akan selalu di-reset. Fungsi yang mengirim request baru akan dijalankan saat user berhenti mengetik dan terdapat jeda waktu yang berlalu sesuai dengan yang sudah di-set. Teknik ini penting untuk diterapkan pada pencarian yang menggunakan AJAX karena akan mencegah request dikirimkan setiap user mengetik satu karakter. Teknik ini juga membantu untuk meringankan beban server dan database serta menghindari race condition.
+2. Saat menggunakan fetch(), await dibutuhkan karena fetch() merupakan fungsi asynchronous, yang mana fetch() tidak langsung mengembalikan Response, melainkan mengembalikan Promise, yakni objek yang merepresentasikan hasil dari operasi asynchronous yang belum selesai. Dalam hal ini, await memiliki fungsi untuk menunggu Promise dari fetch() selesai, kemudian memberikan Response yang diminta. Jika kita tidak menggunakan await pada fetch(), maka jika kita menampung hasil dari fetch() pada sebuah variable, variable tersebut akan berisi Promise, bukan Response. Hal tersebut tentu dapat menimbulkan error di kode-kode berikutnya dan membuat kode tidak berjalan sebagaimana mestinya.
+3. XSS (Cross-Site Scripting) sederhananya adalah sebuah serangan di mana attacker menyusupkan script JavaScript berbahaya ke suatu web dan script tersebut dijalankan oleh browser korban ketika mengakses web tersebut. XSS memiliki tiga jenis utama, yakni reflected XSS, stored XSS, dan DOM-based XSS. Data yang ditampilkan melalui template Django akan relatif aman dari serangan ini karena template Django akan secara default melakukan HTML escaping. Sedangkan ketika kita menggunakan AJAX/JavaScript, upaya pencegahan XSS harus dilakukan secara manual, sehingga jika kita lalai dalam mengimplementasikan fitur keamanannya, data yang ditampilkan melalui AJAX/JavaScript ini akan lebih rentan terhadap serangan XSS. Upaya untuk mencegah XSS jika kita menggunakan AJAX/JavaScript antara lain melakukan escaping manual dan membersihkan input di server.
+
 ## AI Disclosure
 
 AI, berupa chatbot, hanya saya gunakan murni sebagai asisten yang bisa diajak berdiskusi. AI chatbot (ChatGPT) saya gunakan untuk menanyakan hal-hal terkait properti CSS, best practices, troubleshooting, dan mempelajari suatu hal baru. Saya tidak melakukan copy paste dari AI dan selalu mengevaluasi jawaban dari AI.
@@ -129,3 +141,4 @@ Format:
 #### 003 / 3 - Format data default dari database pada Django : [tautan ke chat](https://chatgpt.com/share/6ab15b31-c574-83ec-b0e2-7741938130c1)
 #### 004 / 4 - Django group dan permission : [tautan ke chat](https://chatgpt.com/share/6aba8509-7510-83ec-9fbd-1cbcf37588a4)
 #### 005 / 4 - Troubleshooting ModelForm : [tautan ke chat](https://chatgpt.com/share/6aba8590-ae68-83ec-afe8-77d077e3aea8)
+#### 006 / 5 - Date Formatting JavaScript : [tautan ke chat](https://chatgpt.com/share/6ac36ae1-73dc-83ec-8a4b-fcbdc752e223)
