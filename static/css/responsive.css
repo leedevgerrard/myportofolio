@@ -140,7 +140,7 @@
     gap: 2rem;
   }
 
-  .experience-row {
+  .experience-card {
     display: flex;
     flex-direction: column;
   }
@@ -257,12 +257,18 @@
     width: 100%;
   }
 
+  .project-actions form,
+  .experience-actions form {
+    width: 100%;
+  }
+
   .project-actions .button,
   .experience-status .button,
   .experience-actions .button {
     margin: 0;
     width: 100%;
     text-align: center;
+    justify-content: center;
   }
 
   /* project detail */
@@ -305,23 +311,27 @@
 
   /* project modal */
 
-  .project-form-modal {
+  .project-form-modal,
+  .experience-form-modal {
     align-items: flex-end;
     padding: 0;
   }
 
-  .project-form-modal__content {
+  .project-form-modal__content,
+  .experience-form-modal__content {
     width: 100%;
     max-height: 90vh;
     padding: 1.25rem;
     border-radius: var(--radius) var(--radius) 0 0;
   }
 
-  .project-form-modal__actions {
+  .project-form-modal__actions,
+  .experience-form-modal__actions {
     flex-direction: column-reverse;
   }
 
-  .project-form-modal__actions .button {
+  .project-form-modal__actions .button,
+  .experience-form-modal__actions .button {
     width: 100%;
     text-align: center;
   }

@@ -2,53 +2,53 @@
 {% block content %}
 
     <main>
-      <section class="project" id="project">
-        <div class="container">
-          <div class="project-header">
-                <h1>PROJECTS</h1>
-                {% if user.is_superuser %}
-                    <button type="button"
-                            class="button project-add-button"
-                            popovertarget="add-project-modal">
-                        <span aria-hidden="true">+</span>
-                        Add Project
-                    </button>
-                {% endif %}
-          </div>
+        <section class="project" id="project">
+            <div class="container">
+                <div class="project-header">
+                    <h1>PROJECTS</h1>
+                    {% if user.is_superuser %}
+                        <button type="button"
+                                class="button project-add-button"
+                                popovertarget="add-project-modal">
+                            <span aria-hidden="true">+</span>
+                            Add Project
+                        </button>
+                    {% endif %}
+                </div>
 
-          <form id="project-search-form" class="project-search">
-            <input type="search"
-                    id="search-input"
-                    name="title"
-                    value="{{ title_query }}"
-                    placeholder="Search by project name"
-                    class="project-search__input"
-                    aria-label="Search by project name">
-            <button type="submit" class="button">Search</button>
-          </form>
+                <form id="project-search-form" class="project-search">
+                    <input type="search"
+                            id="search-input"
+                            name="title"
+                            value="{{ title_query }}"
+                            placeholder="Search by project name"
+                            class="project-search__input"
+                            aria-label="Search by project name">
+                    <button type="submit" class="button">Search</button>
+                </form>
 
-          <div class="project-content">
-            <!-- Loading State -->
-            <div id="loading" class="empty-state hide">
-              <p>Loading projects...</p>
+                <div class="project-content">
+                    <!-- Loading State -->
+                    <div id="loading" class="empty-state hide">
+                        <p>Loading projects...</p>
+                    </div>
+
+                    <!-- Error State -->
+                    <div id="error" class="empty-state hide">
+                        <p>Failed to load project data. Please try again.</p>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="empty" class="empty-state hide">
+                        <p>No projects have been added or found yet.</p>
+                    </div>
+
+                    <!-- Project Grid -->
+                    <div id="grid" class="project-grid hide"></div>
+                </div>
+                
             </div>
-
-            <!-- Error State -->
-            <div id="error" class="empty-state hide">
-              <p>Failed to load project data. Please try again.</p>
-            </div>
-
-            <!-- Empty State -->
-            <div id="empty" class="empty-state hide">
-              <p>No projects have been added or found yet.</p>
-            </div>
-
-            <!-- Project Grid -->
-            <div id="grid" class="experience-grid project-grid hide"></div>
-          </div>
-            
-        </div>
-      </section>
+        </section>
     </main>
 
     {% if user.is_superuser %}
@@ -212,7 +212,9 @@
     });
 
     function closeProjectModal() {
-        document.getElementById("add-project-modal").hidePopover();
+        if (document.getElementById("add-project-modal")) {
+            document.getElementById("add-project-modal").hidePopover();
+        }
     }
 
     const CREATE_PROJECT_ENDPOINT = "{% url 'main:create_project_ajax' %}";

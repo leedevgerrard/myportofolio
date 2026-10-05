@@ -126,11 +126,11 @@ class ExperienceForm(ModelForm):
     ]
 
     labels = {
-      "title": "Experience Name",
-      "description": "Experience Description",
+      "title": "Experience Title",
+      "description": "Description",
       "category": "Experience Category",
-      "start_date": "Experience Start Date",
-      "end_date": "Experience End Date"
+      "start_date": "Start Date",
+      "end_date": "End Date"
     }
 
     widgets = {
@@ -161,3 +161,12 @@ class ExperienceForm(ModelForm):
         }
       )
     }
+
+  def clean_title(self):
+    title = strip_tags(self.cleaned_data["title"]).strip()
+    if not title:
+      raise ValidationError("Project name cannot contain only HTML tags.")
+    return title
+
+  def clean_description(self):
+    return strip_tags(self.cleaned_data["description"]).strip()
