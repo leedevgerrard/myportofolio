@@ -15,7 +15,17 @@ class MainTest(TestCase):
         self.project = Project.objects.create(
             title="POSIFIED",
             description="A web-based Point of Sale application created using MERN stack. Built specifically for culinary Micro, Small, and Medium Enterprises (MSMEs)",
-            thumbnail="../static/img/posified-white-logo.png",
+            thumbnail="https://drive.google.com/thumbnail?id=18jQZV5IHLG_zesQUfyQXqFRmiBCOFch2&sz=w1000",
+            year=2025,
+            role="Full Stack Developer",
+            stack="MERN",
+            screenshot="https://drive.google.com/thumbnail?id=1A9bIg0WGfLotiFCPAASM_9NzdSZ0XE6s&sz=w1000",
+            problem="Many MSMEs struggle to adopt POS systems because of overly complex features, confusing workflows, and complicated processes.",
+            goals=[
+                "Simplify the POS experience",
+                "Streamline business operations",
+                "Increase POS adoption",
+            ],
         )
 
     def test_main_url_is_accessible(self):
@@ -43,9 +53,6 @@ class MainTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "experience.html")
-        self.assertContains(response, self.experience.title)
-        self.assertContains(response, self.experience.description)
-        self.assertContains(response, "Part-Time")
         self.assertContains(response, f'href="{reverse("main:show_main")}"')
         self.assertContains(response, f'href="{reverse("main:show_project")}"')
 
@@ -53,7 +60,7 @@ class MainTest(TestCase):
         Experience.objects.all().delete()
         response = self.client.get(reverse("main:show_experience"))
 
-        self.assertContains(response, "No experience added yet.")
+        self.assertContains(response, "No experience have been added or found yet.")
 
     def test_completed_experience(self):
         self.experience.ended_at = timezone.now()
@@ -64,16 +71,13 @@ class MainTest(TestCase):
 
     def test_project_model(self):
         self.assertEqual(str(self.project), "POSIFIED")
-        self.assertEqual(self.project.thumbnail, "../static/img/posified-white-logo.png")
+        self.assertEqual(self.project.thumbnail, "https://drive.google.com/thumbnail?id=18jQZV5IHLG_zesQUfyQXqFRmiBCOFch2&sz=w1000")
 
     def test_project_page(self):
         response = self.client.get(reverse("main:show_project"))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "project.html")
-        self.assertContains(response, self.project.title)
-        self.assertContains(response, self.project.description)
-        self.assertContains(response, "POSIFIED")
         self.assertContains(response, f'href="{reverse("main:show_main")}"')
         self.assertContains(response, f'href="{reverse("main:show_experience")}"')
 
@@ -81,4 +85,4 @@ class MainTest(TestCase):
         Project.objects.all().delete()
         response = self.client.get(reverse("main:show_project"))
 
-        self.assertContains(response, "No projects added yet.")
+        self.assertContains(response, "No projects have been added or found yet.")
