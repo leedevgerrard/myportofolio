@@ -57,6 +57,13 @@ Website ini merupakan website portofolio pribadi yang dibuat untuk memenuhi tuga
 - Menambahkan notifikasi toast
 - Mengimplementasikan mitigasi XSS
 
+### Minggu 10 - Individual Assignment 6: Django REST Framework Implementation
+- Membuat serializer
+- Mengatur permission
+- Membuat api view dan URL
+- Integrasi dengan template
+- API testing
+
 ## Setup & Instalasi
 
 1. Clone repository project ini
@@ -120,6 +127,13 @@ Website dapat diakses pada `http://127.0.0.1:8000/`
 2. Saat menggunakan fetch(), await dibutuhkan karena fetch() merupakan fungsi asynchronous, yang mana fetch() tidak langsung mengembalikan Response, melainkan mengembalikan Promise, yakni objek yang merepresentasikan hasil dari operasi asynchronous yang belum selesai. Dalam hal ini, await memiliki fungsi untuk menunggu Promise dari fetch() selesai, kemudian memberikan Response yang diminta. Jika kita tidak menggunakan await pada fetch(), maka jika kita menampung hasil dari fetch() pada sebuah variable, variable tersebut akan berisi Promise, bukan Response. Hal tersebut tentu dapat menimbulkan error di kode-kode berikutnya dan membuat kode tidak berjalan sebagaimana mestinya.
 3. XSS (Cross-Site Scripting) sederhananya adalah sebuah serangan di mana attacker menyusupkan script JavaScript berbahaya ke suatu web dan script tersebut dijalankan oleh browser korban ketika mengakses web tersebut. XSS memiliki tiga jenis utama, yakni reflected XSS, stored XSS, dan DOM-based XSS. Data yang ditampilkan melalui template Django akan relatif aman dari serangan ini karena template Django akan secara default melakukan HTML escaping. Sedangkan ketika kita menggunakan AJAX/JavaScript, upaya pencegahan XSS harus dilakukan secara manual, sehingga jika kita lalai dalam mengimplementasikan fitur keamanannya, data yang ditampilkan melalui AJAX/JavaScript ini akan lebih rentan terhadap serangan XSS. Upaya untuk mencegah XSS jika kita menggunakan AJAX/JavaScript antara lain melakukan escaping manual dan membersihkan input di server.
 
+### Tugas 6
+
+1. REST (Representational State Transfer) adalah gaya arsitektur untuk merancang sebuah sistem komunikasi (API) antara client dan server. Suatu API bisa dikatakan sebagai REST API bila memenuhi beberapa constraints, antara lain client-server seperation, stateless, cacheable, uniform interface, dan layered system. Mengembalikan JSON saja belum cukup untuk menyebut sebuah API sebagai RESTful karena belum tentu mengikuti prinsip REST. PUT dan PATCH adalah dua method yang berbeda. PUT mengganti keseluruhan resource, sedangkan PATCH memperbarui sebagian resource. Payload PUT mencakup seluruh field resource yang ingin diubah, sedangkan payload PATCH hanya mencakup field yang ingin diubah saja. Oleh karena itu, PUT cocok bila ingin mengganti keseluruhan data dan PATCH cocok bila hanya ingin mengubah satu atau beberapa field.
+2. Serializer adalah komponen Django REST Framework (DRF) yang bekerja dua arah. Pada GET, serializer mengubah objek model menjadi tipe data Python yang dapat dirender ke JSON (serialization). Pada POST/PATCH, serializer memvalidasi data input dan membuatnya siap untuk disimpan (deserialization). Beberapa keuntungan menggunakan serializer dibanding merakit response manual, antara lain kemudahan dalam validasi, mengurangi redundansi kode, integrasi dengan model, lebih mudah dimaintain, dan kemudahan error handling.
+3. Autentikasi adalah proses untuk memverifikasi identitas user, sedangkan otorisasi adalah mekanisme yang menentukan apakah suatu user diizinkan untuk melakukan suatu hal atau mengakses resource tertentu. Pemeriksaan hak akses dengan permission class di server dilakukan agar logika keamanan hak akses sesungguhnya berada di satu tempat saja, yakni server, sehingga setiap request yang masuk dapat diperiksa. Menyembunyikan tombol di template hanya mengubah tampilan saja, tetapi user tetap dapat bisa mengakses, memodifikasi, dan melakukan tindakan secara langsung tanpa melalui UI.
+4. SessionAuthentication hanya bertanggungjawab dalam mengelola autentikasi menggunakan cookie session, tetapi tetap rentan terhadap CSRF. Token CSRF tetap diperlukan guna mencegah serangan CSRF karena token inilah yang membuktikan bahwa request berasal dari sumber yang sah. Test yang menggunakan force_authenticate tidak cukup dalam membuktikan perlindungan CSRF karena force_authenticate memaksakan identitas user pada request tanpa melalui proses autentikasi normal, sehingga proses autentikasi session yang biasanya disertai pemeriksaan CSRF dapat dilewati. Untuk menguji perlindungan CSRF, kita perlu menggunakan APIClient(enforce_csrf_checks=True) dan autentikasi session normal dengan login.
+
 ## AI Disclosure
 
 AI, berupa chatbot, hanya saya gunakan murni sebagai asisten yang bisa diajak berdiskusi. AI chatbot (ChatGPT) saya gunakan untuk menanyakan hal-hal terkait properti CSS, best practices, troubleshooting, dan mempelajari suatu hal baru. Saya tidak melakukan copy paste dari AI dan selalu mengevaluasi jawaban dari AI.
@@ -142,3 +156,4 @@ Format:
 #### 004 / 4 - Django group dan permission : [tautan ke chat](https://chatgpt.com/share/6aba8509-7510-83ec-9fbd-1cbcf37588a4)
 #### 005 / 4 - Troubleshooting ModelForm : [tautan ke chat](https://chatgpt.com/share/6aba8590-ae68-83ec-afe8-77d077e3aea8)
 #### 006 / 5 - Date Formatting JavaScript : [tautan ke chat](https://chatgpt.com/share/6ac36ae1-73dc-83ec-8a4b-fcbdc752e223)
+#### 007 / 6 - Update Form Prefill : [tautan ke chat](https://chatgpt.com/share/6af1e20a-7334-83ec-841f-0f1a90e59f27) 
