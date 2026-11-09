@@ -51,7 +51,7 @@
         </section>
     </main>
 
-    {% if user.is_superuser %}
+    {% if user.is_superuser or is_editor %}
         {% include "components/project_form_modal.html" %}
     {% endif %}
     
@@ -63,6 +63,7 @@
         const SHOW_DETAIL_PROJECT_ENDPOINT = "{% url 'main:show_project_detail' '00000000-0000-0000-0000-000000000000' %}";
         const IS_SUPERUSER = "{{ user.is_superuser|yesno:'true,false' }}" === "true";
         const IS_AUTHENTICATED = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
+        const IS_EDITOR = "{{ is_editor|yesno:'true,false' }}" === "true";
 
         const loadingState = document.getElementById('loading');
         const errorState = document.getElementById('error');
@@ -71,8 +72,14 @@
         const searchForm = document.getElementById('project-search-form');
         const searchInput = document.getElementById('search-input');
         const projectForm = document.getElementById('project-form');
+        const projectModal = document.getElementById('add-project-modal');
         let projectsAbortController;
         let searchDebounceTimer;
+        let projectsCache = new Map();
+
+        const PROJECT_FIELDS = [
+            'title', 'description', 'thumbnail', 'year', 'role', 'stack', 'screenshot', 'problem', 'goals',
+        ];
 
         function getCookie(name) {
             const prefix = `${name}=`;
@@ -112,6 +119,9 @@
                     title="${escapeHtml(project.starred_by_names)}">
                     ${project.is_starred ? 'Unstar' : 'Star'} (${project.star_count})</button>`
                 : `<a href="{% url 'main:login' %}" class="button">Login to star (${project.star_count})</a>`;
+            const edit = IS_SUPERUSER || IS_EDITOR
+                ? `<button type="button" class="button" data-action="edit"
+                    data-id="${escapeHtml(project.id)}">Edit</button>` : '';
             const remove = IS_SUPERUSER
                 ? `<button type="button" class="button button-danger" data-action="delete"
                     data-id="${escapeHtml(project.id)}">Delete</button>` : '';
@@ -124,7 +134,7 @@
                     <p class="experience-description">${escapeHtml(project.description)}</p>
                     <div class="project-card-actions">
                         <div class="project-actions">
-                            ${detail}${star}${remove}
+                            ${detail}${star}${edit}${remove}
                         </div>
                     </div>
                 </div>
@@ -145,6 +155,7 @@
                 });
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const projects = await response.json();
+                projectsCache = new Map(projects.map(item => [String(item.id), item]));
                 gridContainer.replaceChildren(...projects.map(buildProjectCardElement));
                 displayPageSection({ showGrid: projects.length > 0, showEmpty: projects.length === 0 });
             } catch (error) {
@@ -175,34 +186,68 @@
             return data;
         }
 
-        async function addProject(event) {
+        async function saveProject(event) {
             event.preventDefault();
             const button = projectForm.querySelector('button[type="submit"]');
+            const id = projectForm.dataset.projectId;
+            const isEdit = Boolean(id);
             button.disabled = true;
             try {
                 const fields = new FormData(projectForm);
-                const payload = Object.fromEntries([
-                    'title', 'description', 'thumbnail', 'year', 'role', 'stack', 'screenshot', 'problem', 'goals',
-                ].map(name => [name, fields.get(name)]));
-                await writeProject(BASE_PROJECTS_ENDPOINT, 'POST', payload);
-                projectForm.reset();
-                document.getElementById('add-project-modal').hidePopover();
-                showToast('Success', 'Project created.', 'success');
+                const payload = Object.fromEntries(PROJECT_FIELDS.map(name => [name, fields.get(name)]));
+                const url = isEdit
+                    ? projectEndpoint(DETAIL_PROJECT_ENDPOINT, id)
+                    : BASE_PROJECTS_ENDPOINT;
+                await writeProject(url, isEdit ? 'PATCH' : 'POST', payload);
+                projectModal.hidePopover();
+                showToast('Success', isEdit ? 'Project updated.' : 'Project created.', 'success');
                 await fetchProjects(searchInput.value.trim());
             } catch (error) {
-                showToast('Could not create project', error.message, 'error');
+                showToast(isEdit ? 'Could not update project' : 'Could not create project', error.message, 'error');
             } finally {
                 button.disabled = false;
             }
         }
 
-        if (projectForm) projectForm.addEventListener('submit', addProject);
+        function openEditProject(id) {
+            const project = projectsCache.get(String(id));
+            if (!project) return;
+            projectForm.dataset.projectId = project.id;
+            for (const name of PROJECT_FIELDS) {
+                const input = projectForm.elements[name];
+                if (input) {
+                    if (name === 'goals') {
+                        project[name].forEach(goal => {
+                            input.value += goal + '\n';
+                        });
+                    } else {
+                        input.value = project[name] ?? '';
+                    }
+                }
+            }
+            setProjectFormMode(true);
+            projectModal.showPopover();
+        }
+
+        projectModal?.addEventListener('toggle', (event) => {
+            if (event.newState === 'closed') {
+                projectForm.reset();
+                delete projectForm.dataset.projectId;
+                setProjectFormMode(false);
+            }
+        })
+
+        if (projectForm) projectForm.addEventListener('submit', saveProject);
 
         gridContainer.addEventListener('click', async function(event) {
             const button = event.target.closest('button[data-action]');
             if (!button || button.disabled) return;
             const action = button.dataset.action;
             if (action === 'delete' && !window.confirm('Delete this project?')) return;
+            if (action === 'edit') {
+                openEditProject(button.dataset.id);
+                return;
+            }
             button.disabled = true;
             try {
                 const pattern = action === 'star' ? STAR_PROJECT_ENDPOINT : DETAIL_PROJECT_ENDPOINT;
@@ -216,6 +261,12 @@
                 button.disabled = false;
             }
         });
+
+        function setProjectFormMode(isEdit) {
+            projectModal.querySelectorAll('[data-changing-text]').forEach(el => {
+                el.textContent = isEdit ? el.dataset.editText : el.dataset.addText;
+            });
+        }
 
         searchInput.addEventListener('input', function() {
             clearTimeout(searchDebounceTimer);

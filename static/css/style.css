@@ -748,6 +748,7 @@ p {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: 1em;
 }
 
 .project-actions .button,
@@ -1003,6 +1004,7 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: left;
+    width: 100%;
 }
 
 .hero-detail-content h2 {
@@ -1066,9 +1068,13 @@ p {
     border-radius: 10px;
 }
 
+.problem-goals {
+    width: 100%;
+}
+
 .about .problem-goals-container {
     display: grid;
-    grid-template-columns: 49% 49%;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
     gap: 2%;
     width: 100%;
     padding-inline: 0;
@@ -1080,6 +1086,7 @@ p {
     padding: 2em;
     margin: 1em 0;
     height: 100%;
+    width: 100%;
     border-radius: 10px;
 }
 

@@ -39,6 +39,9 @@ def show_experience(request):
         "name": "Lee Devin Gerrard",
         "title_query": title_query,
         "form": ExperienceForm(),
+        "is_editor": request.user.groups.filter(
+            name="Editor"
+        ).exists(),
     }
     return render(request, "experience.html", context)
 
@@ -50,6 +53,9 @@ def show_project(request):
         "name": "Lee Devin Gerrard",
         "title_query": title_query,
         "form": ProjectForm(),
+        "is_editor": request.user.groups.filter(
+            name="Editor"
+        ).exists(),
     }
     return render(request, "project.html", context)
 
@@ -196,7 +202,6 @@ def get_experience_json(request):
                 "title": exp.title,
                 "description": exp.description,
                 "category": exp.category,
-                "thumbnail_url": exp.thumbnail,
                 "start_date": exp.start_date,
                 "end_date": exp.end_date,
                 "star_count": starred_users.count(),
