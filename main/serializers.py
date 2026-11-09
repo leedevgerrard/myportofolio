@@ -40,7 +40,7 @@ class ProjectSerializer(serializers.ModelSerializer):
   def validate_goals(self, value):
     return [
       strip_tags(goal.strip())
-      for goal in value.splitlines()
+      for goal in value
       if goal.strip()
     ]
 
